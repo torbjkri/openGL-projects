@@ -3,22 +3,23 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <iostream>
 
 #include <vector>
 
 // Defines several possible options for camera movement. Used as abstraction to stay away from window-system specific input methods
 enum Camera_Movement {
-                      FORWARD,
-                      BACKWARD,
-                      LEFT,
-                      RIGHT
+    FORWARD,
+    BACKWARD,
+    LEFT,
+    RIGHT
 };
 
 // Default camera values
 const float YAW         = -90.0f;
 const float PITCH       =  0.0f;
 const float SPEED       =  2.5f;
-const float SENSITIVITY =  0.1f;
+const float SENSITIVITY =  0.05f;
 const float ZOOM        =  45.0f;
 
 
@@ -69,14 +70,18 @@ public:
     void ProcessKeyboard(Camera_Movement direction, float deltaTime)
     {
         float velocity = MovementSpeed * deltaTime;
-        if (direction == FORWARD)
+        if (direction == FORWARD) {
             Position += Front * velocity;
-        if (direction == BACKWARD)
+        }
+        if (direction == BACKWARD) {
             Position -= Front * velocity;
-        if (direction == LEFT)
+        }
+        if (direction == LEFT) {
             Position -= Right * velocity;
-        if (direction == RIGHT)
+        }
+        if (direction == RIGHT) {
             Position += Right * velocity;
+        }
     }
 
     // Processes input received from a mouse input system. Expects the offset value in both the x and y direction.
@@ -90,12 +95,12 @@ public:
 
         // Make sure that when pitch is out of bounds, screen doesn't get flipped
         if (constrainPitch)
-            {
-                if (Pitch > 89.0f)
-                    Pitch = 89.0f;
-                if (Pitch < -89.0f)
-                    Pitch = -89.0f;
-            }
+        {
+            if (Pitch > 89.0f)
+                Pitch = 89.0f;
+            if (Pitch < -89.0f)
+                Pitch = -89.0f;
+        }
 
         // Update Front, Right and Up Vectors using the updated Euler angles
         updateCameraVectors();
@@ -128,3 +133,4 @@ private:
     }
 };
 #endif
+
