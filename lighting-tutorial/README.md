@@ -1,15 +1,15 @@
 # Progress
- - [X] Colors
+ - [x] Colors
    + Intro and setup
- - [X] Basic Lighting
+ - [x] Basic Lighting
    + Phong Lighting model
      * Ambient, Diffuse, Specular
- - [X] Materials
+ - [x] Materials
    + Different materials have different lighting properties
- - [X] Lighting maps
+ - [x] Lighting maps
    + Different parts of same object have different lighting properties
- - [] Light Casters
+ - [ ] Light Casters
    + Directional light (light source at infinity)
    + Point light. Direction and distance attenuation
- - [] Multiple lights
- - [] Review
+ - [ ] Multiple lights
+ - [ ] Review
