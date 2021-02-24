@@ -148,6 +148,7 @@ int main(void)
         std::cout << "Error: Unable to initialize GLEW!" << std::endl;
         return 1;
     }
+    glfwSwapInterval(1);
     std::cout << glGetString(GL_VERSION) << std::endl;
 
     glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
@@ -191,14 +192,23 @@ int main(void)
     unsigned int shader = CreateShader(shaderSource.VertexSource, shaderSource.FragmentSource);
     glUseProgram(shader);
 
+    int location = glGetUniformLocation(shader, "u_Color");
+    float r = 0.0f;
+    float increment = 0.04f;
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
-
+        glUniform4f(location, r, 1.0f, 0.2f, 1.0f);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+        
+        if (r > 1.0f)
+            increment = -0.04f;
+        if (r < 0.0f)
+            increment = 0.04f;
 
+        r += increment;
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 
