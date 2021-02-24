@@ -1,1 +1,0 @@
-g++ -std=c++17 DxBall.cpp DxEngine.cpp ResourceManager.cpp Shader.cpp Texture.cpp -lGL -lGLEW -lglfw -lSOIL -o DxBall && ./DxBall
