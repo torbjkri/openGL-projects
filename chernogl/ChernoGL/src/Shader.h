@@ -31,4 +31,5 @@ public:
 
 	// Set uniforms
 	void SetUniform4f(const std::string& name, const float v1, const float v2, const float v3, const float v4);
+	void SetUniform1i(const std::string& name, const int value);
 };
